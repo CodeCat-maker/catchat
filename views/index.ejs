@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            background-color: black;
+            width: 100%;
+            height: 500px;
+        }
+
+        #m {
+            height: 200px;
+            width: 100%;
+        }
+
+        button {
+            width: 100px;
+            height: 50px;
+        }
+
+        li {
+            color: blanchedalmond;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            var socket = io();
+            var btn = document.getElementById("send");
+            btn.onclick = function () {
+                var text = document.getElementById("m").value;
+                socket.emit("chatroom", text);
+                return false;
+            }
+
+            socket.on("chatroom", (data) => {
+                var ul = document.getElementsByTagName("ul")[0];
+                var li = document.createElement("li");
+                var d = new Date;
+                
+                li.innerHTML = "【"+d.toString()+"】" +  data;
+                ul.appendChild(li);
+            })
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Chatroom聊天室</h1>
+    <hr>
+    <ul></ul>
+    <hr>
+    <textarea id="m"></textarea>
+    <button id="send">Send</button>
+</body>
+
+</html>
