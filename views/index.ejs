@@ -32,6 +32,7 @@
                     var time = d.getHours() +":"+d.getMinutes()+":"+d.getSeconds();
                     li.innerHTML = "用户："+data.user+"在"+time+"加入";
                     ul.appendChild(li);
+                    console.log(data.userList);
                     await nowUserList(data.userList);
                 }
                 if(data.msg == "left"){
@@ -63,10 +64,11 @@
     <h1>Chatroom聊天室</h1>
     <hr>
     <div id="chatmain">
-        <ul id = "chatList"></ul>
+        <div id = "box1">
+            <ul id = "chatList"></ul>
+        </div>
         <ul id = "userList">
             <li style="font-weight: bold;">当前用户</li>
-            
         </ul>
     </div>
     <hr>

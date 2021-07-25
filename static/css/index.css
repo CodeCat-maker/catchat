@@ -3,7 +3,6 @@
     padding: 0;
 }
 #chatmain {
-    
     width: 100%;
     height: 500px;
 }
@@ -25,13 +24,18 @@ button {
 #chatList li {
     color: blanchedalmond;
 }
-#chatList {
-    height: 500px;
-    background-color: black;
+#box1 {
+    height: 100%;
     width: 80%;
     float: left;
+    background-color: black;
+    overflow-y: scroll;
+    scrollbar-track-color: white;
 }
 #userList {
     float: left;
+}
+#box2{
+    overflow-y: scroll;
 }
 
