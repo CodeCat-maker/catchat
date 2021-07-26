@@ -1,0 +1,49 @@
+.progress {
+  @include border-style(5);
+  @include color('border-color', 'primary');
+  border: 2px solid;
+  box-shadow: $shadow-hover;
+  height: 1.2rem;
+  overflow: hidden;
+  width: 100%;
+
+  .bar {
+    @include border-style(5);
+    @include transition;
+    @include color('background-color', 'primary-light');
+    @include color('border-color', 'primary');
+    border-right: 2px solid;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.6rem;
+    height: 100%;
+    justify-content: center;
+    text-align: center;
+    width: 0%;
+
+    &.striped {
+      @include striped-background($primary-light);
+    }
+
+    @each $colorName, $color, $color-light in $colors {
+      &.#{$colorName} {
+        @include color('background-color', #{$colorName}-light);
+  
+        &.striped {
+          @include striped-background($color-light);
+        }
+      }
+    }
+
+    @for $i from 0 through 100 {
+      &.w-#{$i} {
+        width: $i * 1%;
+      }
+    }
+  
+    &.w-0,
+    &.w-100 {
+      border-right: 0;
+    }
+  }
+}

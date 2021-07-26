@@ -7,9 +7,19 @@
     <title></title>
     <script src="/socket.io/socket.io.js"></script>
     <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/paper.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-
+        (function(){
+            let data = new Date;
+            let hours = data.getHours();
+            console.log(hours);
+            if(hours >=19){
+                var html = document.getElementsByTagName("html")[0];
+                html.className="dark";
+                html.style.backgroundColor="black";
+            }
+        }())
 
         window.onload = function () {
             var socket = io();
@@ -88,6 +98,7 @@
                 mimeType:"mulipart/form-data",
                 success:(result)=>{
                     console.log(result);
+                    alert("发送成功");
                     return false;
                     
                 },
@@ -101,26 +112,32 @@
     </script>
 </head>
 <body>
-    <div id= "header">
-        <h1>Chatroom聊天室</h1>
-        <h2>当前用户为：<span id="userId"></span></h2>
+    <div class="paper row margin-top-small" id= "header">
+        <h4 class="col-3 col">Chatroom聊天室</h1>
+        <h5 class="clo-9 col">当前用户为：<span id="userId"></span></h2>
     </div>
     <hr>
-    <div id="chatmain">
-        <div id = "box1">
-            <ul id = "chatList"></ul>
+    <div class="paper con">
+        <div id="chatmain" class="row flex-spaces border shadow">
+            <div id = "box1" class=" col-8 col border" >
+                <ul id = "chatList"></ul>
+            </div>
+            <div id="box2" class="col-3">
+                <ul id = "userList">
+                    <li style="font-weight: bold;">当前用户</li>
+                </ul>
+            </div>
         </div>
-        <div id="box2">
-            <ul id = "userList">
-                <li style="font-weight: bold;">当前用户</li>
-            </ul>
+        <hr>
+        <div id="optionMain" class="row flex-center border margin">
+            <%- include('imgs') %>
+            <textarea id="m" class="margin"></textarea>
+            <button id="send">Send</button>
         </div>
-    </div>
-    <hr>
-    <div id="optionMain">
-        <%- include('imgs') %>
-        <textarea id="m"></textarea>
-        <button id="send">Send</button>
+        <div class="row flex-center">
+            <p>2021@powered by Codecat</p>
+            
+        </div>
     </div>
     
 </body>

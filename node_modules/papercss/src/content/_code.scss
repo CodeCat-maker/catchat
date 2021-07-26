@@ -1,0 +1,42 @@
+code {
+  @include color('color', 'secondary');
+  @include color('background-color', 'primary-shaded-70');
+  border-radius: 3px;
+  font-size: 80%;
+  padding: 2px 4px;
+}
+
+kbd {
+  @include color('color', 'primary-inverse');
+  @include color('background-color', 'primary');
+  border-radius: 3px;
+  font-size: 80%;
+  padding: 2px 4px;
+}
+
+pre {
+  @include color('color', 'inverse-primary');
+  @include color('background-color', 'primary-shaded-70');
+  @include color('border-color', 'primary-shaded-50');
+
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 1px;
+  display: block;
+  font-size: 80%;
+  line-height: 1.5;
+  overflow-x: auto;
+  padding: 1em;
+  white-space: pre;
+  word-break: break-all;
+  word-wrap: break-word;
+
+  code {
+    @include color('color', 'inverse-primary');
+    background: transparent;
+    display: block;
+    font-size: inherit;
+    padding: initial;
+    white-space: pre;
+  }
+}

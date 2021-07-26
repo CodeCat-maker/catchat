@@ -1,0 +1,22 @@
+.badge {
+  @include border-style();
+  @include color('color', 'white');
+  @include color('background-color', 'muted');
+  @include color('border-color', 'primary');
+  border: 2px solid;
+  border-color: transparent;
+  display: inline-block;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  padding: 0.25em 0.4em;
+  text-align: center;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+@each $colorName, $color in $colors {
+  .badge.#{$colorName} {
+    @include color('background-color', #{$colorName});
+  }
+}

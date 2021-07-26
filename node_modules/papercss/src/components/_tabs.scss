@@ -1,0 +1,38 @@
+.tabs {
+  .content {
+    display: none;
+    flex-basis: 100%;
+    padding: 0.75rem 0 0;
+  }
+
+  input {
+    display: none;
+
+    &:checked + label {
+      @include color(color, 'primary');
+      @include color('border-bottom-color', 'secondary');
+      border-bottom-style: solid;
+      border-bottom-width: 3px;
+    }
+
+    @for $num from 1 through 5 {
+      &[id$='tab#{$num}']:checked~div[id$='content#{$num}'] {
+        display: block;
+      }
+    }
+  }
+
+  label {
+    @include color('color', primary-light);
+    display: inline-block;
+    font-weight: 600;
+    margin: 0 0 -1px;
+    padding: 0.75rem;
+    text-align: center;
+
+    &:hover {
+      @include color('color', muted);
+      cursor: pointer;
+    }
+  }
+}

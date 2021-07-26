@@ -1,0 +1,70 @@
+.container {
+  margin: 0 auto;
+  max-width: 960px;
+  position: relative;
+  width: 100%;
+  @include resp(medium) {
+    width: 85%;
+  }
+  @include resp(xsmall) {
+    width: 90%;
+  }
+}
+
+.container {
+  &.container-xs {
+    max-width: $xsmall-screen;
+  }
+}
+
+.container {
+  &.container-sm {
+    max-width: $small-screen;
+  }
+}
+
+.container {
+  &.container-md {
+    max-width: $medium-screen;
+  }
+}
+
+.container {
+  &.container-lg {
+    max-width: $large-screen;
+  }
+}
+
+.section {
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+  word-wrap: break-word;
+
+  &::after {
+    @include hr-after;
+  }
+}
+
+hr {
+  border: 0;
+
+  &::after {
+    @include hr-after;
+    top: -0.75rem;
+  }
+}
+
+.paper {
+  @include color('background-color', 'main-background');
+  border: 1px solid $primary-light;
+  box-shadow: -1px 5px 35px -9px hsla(0, 0%, 0%, 0.2);
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  padding: 2rem;
+  @include resp(xs) {
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: 1rem;
+    width: 100%;
+  }
+}
