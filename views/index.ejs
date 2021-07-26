@@ -7,7 +7,10 @@
     <title></title>
     <script src="/socket.io/socket.io.js"></script>
     <link rel="stylesheet" href="./css/index.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+
+
         window.onload = function () {
             var socket = io();
             var btn = document.getElementById("send");
@@ -15,7 +18,7 @@
                 var text = document.getElementById("m").value;
                 socket.emit("chatroom", text);
                 return false;
-            }
+            }   
             socket.on("chatroom", async (data) => {
                 if(data.msg == "msg"){
                     let ul = document.getElementsByTagName("ul")[0];
@@ -26,6 +29,8 @@
                     ul.appendChild(li);
                 }
                 if(data.msg == "join"){
+                    var id = document.getElementById("userId");
+                    id.innerHTML = data.user;
                     var ul = document.getElementsByTagName("ul")[0];
                     var li = document.createElement("li");
                     var d = new Date;
@@ -44,24 +49,62 @@
                     ul.appendChild(li);
                     await nowUserList(data.userList);
                 }
+                if(data.msg == "img"){
+                    var ul = document.getElementsByTagName("ul")[0];
+                    var li = document.createElement("li");
+                    data.user = document.getElementById("userId").innerText;
+                    var d = new Date;
+                    var time = d.getHours() +":"+d.getMinutes()+":"+d.getSeconds();
+                    li.innerText = "用户："+data.user+"在"+time+"发送了一张图片";
+                    var path = data.path;
+                    var img = document.createElement("img");
+                    img.style.width = "50px";
+                    img.style.height = "50px";
+                    img.style.border= "1px solid white";
+                    img.src = path;
+                    li.appendChild(img);
+                    ul.appendChild(li);
+                }
             })
-
         }
         async function nowUserList (list){
             let ul = document.getElementById("userList");
             ul.innerHTML = "<li style='font-weight: bold;''>当前用户</li>";
-            
             for(var i = 0 ; i < list.length ; i ++){
                 let li = document.createElement("li");
                 li.innerText = list[i];
                 ul.appendChild(li);
             }
-            
+        }
+        function upload(){
+            var formData = new FormData();
+            formData.append('photoImg',document.getElementById("photo").files[0]);
+            $.ajax({
+                type:"POST",
+                url:"upload",
+                data:formData,
+                contentType:false,
+                processData:false,
+                mimeType:"mulipart/form-data",
+                success:(result)=>{
+                    console.log(result);
+                    return false;
+                    
+                },
+                error:(data)=>{
+                    console.log("失败");
+                    return false;
+                }
+            })
+            return false;
         }
     </script>
 </head>
 <body>
-    <h1>Chatroom聊天室</h1>
+    <div id= "header">
+        <h1>Chatroom聊天室</h1>
+        <h2>当前用户为：<span id="userId"></span></h2>
+    </div>
     <hr>
     <div id="chatmain">
         <div id = "box1">
@@ -75,6 +118,7 @@
     </div>
     <hr>
     <div id="optionMain">
+        <%- include('imgs') %>
         <textarea id="m"></textarea>
         <button id="send">Send</button>
     </div>

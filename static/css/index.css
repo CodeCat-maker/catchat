@@ -38,4 +38,15 @@ button {
 #box2{
     overflow-y: scroll;
 }
+#header{
+    width: 100%;
+}
+#header h1{
+    display: inline;
+}
+#header h2{
+    display: inline;
+}
+
+
 
