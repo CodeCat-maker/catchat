@@ -22,6 +22,7 @@
         }())
 
         window.onload = function () {
+            uploadUserId();
             var socket = io();
             var btn = document.getElementById("send");
             btn.onclick = function () {
@@ -39,8 +40,6 @@
                     ul.appendChild(li);
                 }
                 if(data.msg == "join"){
-                    var id = document.getElementById("userId");
-                    id.innerHTML = data.user;
                     var ul = document.getElementsByTagName("ul")[0];
                     var li = document.createElement("li");
                     var d = new Date;
@@ -76,6 +75,10 @@
                     ul.appendChild(li);
                 }
             })
+        }
+        function uploadUserId(){
+            var user = document.getElementById("userId");
+            user.innerText = document.cookie.split("=")[1];
         }
         async function nowUserList (list){
             let ul = document.getElementById("userList");

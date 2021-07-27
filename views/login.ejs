@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/paper.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>登陆页面</title>
+    <style>
+        .sh form{
+            display: none;
+        }
+        .sh form:target {
+            display: block;
+        }
+        #footer{
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+    <script>
+        function login(){
+            $.ajax({
+                url:"/checkLogin",
+                type:"post",
+                data:$("#login").serialize(),
+                dataType:"text",
+                success:(result)=>{
+                    if (result == "success"){
+                        if(confirm("登陆成功") == true){
+                            window.location = "/";
+                        }
+                    }else{
+                        alert("登陆失败");
+                    }
+                },
+                error:(err)=>{
+                    console.log(err);
+                }
+                
+            })
+            return false;
+        }
+    </script>
+</head>
+
+<body>
+    <div class="paper margin-top-small">
+        <div class="row flex-center">
+            <div>
+                <h1>welcome catchat</h1>
+                <div>
+                    <a href="#login">login</a>
+                    <a href="#register">register</a>
+                </div>
+            </div>
+            <div class="row flex-spaces">
+                <div>
+                    <div class="sh">
+                        <form id="login" onsubmit="return login();">
+                            <label>用户名</label><input type="text" name="username"><br>
+                            <label>密码</label><input type="password" name="password"><br>
+                            <label>房间名</label><input type="text" name="rommid"><br>
+                            <input type="submit" value="登陆">
+                        </form>
+                        <form id="register">
+                            <label>用户名</label><input type="text"><br>
+                            <label>密码</label><input type="password"><br>
+                            <input type="submit" value="注册">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer" class="row flex-center">
+        <p class="">2021@powered by Codecat</p>
+    </div>
+</body>
+
+</html>
