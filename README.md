@@ -9,7 +9,7 @@
 
 #### 首页
 
-![截屏2021-07-27 下午12.35.40](/Users/wangzepeng/代码/nodejs/project/mychatroom/README.assets/截屏2021-07-27 下午12.35.40.png)
+![截屏2021-07-27 下午12.35.40](README.assets/截屏2021-07-27 下午12.35.40.png)
 
 #### 登陆
 
