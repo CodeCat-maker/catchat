@@ -13,19 +13,19 @@
 
 #### 登陆
 
-![image-20210727124016381](/Users/wangzepeng/代码/nodejs/project/mychatroom/README.assets/image-20210727124016381.png)
+![image-20210727124016381](README.assets/image-20210727124016381.png)
 
 #### 注册
 
-![image-20210727124040750](/Users/wangzepeng/代码/nodejs/project/mychatroom/README.assets/image-20210727124040750.png)
+![image-20210727124040750](README.assets/image-20210727124040750.png)
 
 #### 聊天室首页
 
-![image-20210727124135889](/Users/wangzepeng/代码/nodejs/project/mychatroom/README.assets/image-20210727124135889.png)
+![image-20210727124135889](README.assets/image-20210727124135889.png)
 
 #### 发送消息和图片
 
-![image-20210727131524153](/Users/wangzepeng/代码/nodejs/project/mychatroom/README.assets/image-20210727131524153.png)
+![image-20210727131524153](README.assets/image-20210727131524153.png)
 
 ### 项目使用
 
