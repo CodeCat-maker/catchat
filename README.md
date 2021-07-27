@@ -1,9 +1,31 @@
 ## 项目说明
 
-#### 当前版本v1.3.0
-优化显示风格 支持暗黑模式/白天模式
+#### 当前版本v1.4.0
+增加登陆/注册页面 初步实现登陆功能
 
 本项目是在个人学习Nodejs开发的聊天室项目，技术使用njs模版和socket.io两个第三方库
+
+### 项目展示
+
+#### 首页
+
+![截屏2021-07-27 下午12.35.40](/Users/wangzepeng/代码/nodejs/project/mychatroom/README.assets/截屏2021-07-27 下午12.35.40.png)
+
+#### 登陆
+
+![image-20210727124016381](/Users/wangzepeng/代码/nodejs/project/mychatroom/README.assets/image-20210727124016381.png)
+
+#### 注册
+
+![image-20210727124040750](/Users/wangzepeng/代码/nodejs/project/mychatroom/README.assets/image-20210727124040750.png)
+
+#### 聊天室首页
+
+![image-20210727124135889](/Users/wangzepeng/代码/nodejs/project/mychatroom/README.assets/image-20210727124135889.png)
+
+#### 发送消息和图片
+
+![image-20210727131524153](/Users/wangzepeng/代码/nodejs/project/mychatroom/README.assets/image-20210727131524153.png)
 
 ### 项目使用
 
