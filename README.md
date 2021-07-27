@@ -9,23 +9,23 @@
 
 #### 首页
 
-![截屏2021-07-27 下午12.35.40](https://github.com/CodeCat-maker/catchat/tree/main/README.assets/截屏2021-07-27 下午12.35.40.png)
+![截屏2021-07-27 下午12.35.40](https://raw.githubusercontent.com/CodeCat-maker/catchat/tree/main/README.assets/截屏2021-07-27 下午12.35.40.png)
 
 #### 登陆
 
-![image-20210727124016381](https://github.com/CodeCat-maker/catchat/tree/main/README.assets/image-20210727124016381.png)
+![image-20210727124016381](https://raw.githubusercontent.com/CodeCat-maker/catchat/tree/main/README.assets/image-20210727124016381.png)
 
 #### 注册
 
-![image-20210727124040750](https://github.com/CodeCat-maker/catchat/tree/main/README.assets/image-20210727124040750.png)
+![image-20210727124040750](https://raw.githubusercontent.com/CodeCat-maker/catchat/tree/main/README.assets/image-20210727124040750.png)
 
 #### 聊天室首页
 
-![image-20210727124135889](https://github.com/CodeCat-maker/catchat/tree/main/README.assets/image-20210727124135889.png)
+![image-20210727124135889](https://raw.githubusercontent.com/CodeCat-maker/catchat/tree/main/README.assets/image-20210727124135889.png)
 
 #### 发送消息和图片
 
-![image-20210727131524153](https://github.com/CodeCat-maker/catchat/tree/main/README.assets/image-20210727131524153.png)
+![image-20210727131524153](https://raw.githubusercontent.com/CodeCat-maker/catchat/tree/main/README.assets/image-20210727131524153.png)
 
 ### 项目使用
 
