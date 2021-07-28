@@ -33,6 +33,7 @@
                 data:$("#login").serialize(),
                 dataType:"text",
                 success:(result)=>{
+                    
                     if (result == "success"){
                         if(confirm("登陆成功") == true){
                             window.location = "/";
@@ -43,6 +44,30 @@
                 },
                 error:(err)=>{
                     console.log(err);
+                }
+                
+            })
+            return false;
+        }
+        function register(){
+            $.ajax({
+                url:"/register",
+                type:"post",
+                data:$("#register").serialize(),
+                dataType:"text",
+                success:(result)=>{
+                    console.log(result);
+                    if (result == "success"){
+                        if(confirm("注册成功") == true){
+                            window.location = "/";
+                        }
+                    }else{
+                        alert("注册失败");
+                    }
+                },
+                error:(err)=>{
+                    console.log(err);
+                    return;
                 }
                 
             })
@@ -70,9 +95,9 @@
                             <label>房间名</label><input type="text" name="rommid"><br>
                             <input type="submit" value="登陆">
                         </form>
-                        <form id="register">
-                            <label>用户名</label><input type="text"><br>
-                            <label>密码</label><input type="password"><br>
+                        <form id="register" onsubmit="return register();">
+                            <label>用户名</label><input type="text" name="username"><br>
+                            <label>密码</label><input type="password" name="password"><br>
                             <input type="submit" value="注册">
                         </form>
                     </div>

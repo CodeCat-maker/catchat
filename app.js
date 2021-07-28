@@ -16,7 +16,11 @@ app.use(bodyParser.urlencoded({extended:false}))
 http.listen(3000,()=>{
     console.log("本地3000端口");
 })
+
+
 checkUser.login(app);
+checkUser.register(app);
+
 const chatroom = require('./moudle/chatroom.js');
 const { fstat } = require('fs');
 app.use(express.static(path.join(__dirname,"static")))
@@ -25,19 +29,18 @@ app.get("/login",(req,res)=>{
        res.location("/") 
        res.end()
     }
+    res.statusCode = 302;
     res.render("login",{});
 })
 
 app.get('/' , (req , res)=>{
-    console.log(req.cookies.name);
     if(!req.cookies.name){
-        res.location("/login");
-        res.sendStatus(302);
+        res.redirect("/login");
+        return
     }
     console.log("success");
     res.render("index",{});
 })
-
 app.post('/upload',uploader.single("photoImg"),(req,res)=>{
     let file = req.file;
     console.log(file);
@@ -53,7 +56,6 @@ app.post('/upload',uploader.single("photoImg"),(req,res)=>{
     chatroom.uploadImg(io,file.filename+extname);
     res.send("发送成功");
 })
-
 //配置错误应用中间件
 app.use((req,res)=>{
     res.status(404).render('404',{});
