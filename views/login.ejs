@@ -9,11 +9,26 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>登陆页面</title>
     <style>
+        *{
+            box-sizing: border-box;
+        }
+        a{
+            font-size: 20px;
+            transition: font-size 0.1s ease-out 0.1s;
+        }
+        .active {
+            font-size: 30px;
+            transition: font-size 0.1s ease-in-out 0.1s;
+        }
+        .sh {
+            display: flex;
+        }
         .sh form{
             display: none;
         }
         .sh form:target {
             display: block;
+            
         }
         #footer{
             position: relative;
@@ -26,6 +41,21 @@
         }
     </style>
     <script>
+        var as = undefined
+        window.onload=()=>{
+            as = document.querySelectorAll("a");
+            as.forEach((a)=>{
+                a.addEventListener("click",()=>{
+                    clearAClass();
+                    a.classList.add("active");
+                })
+            })
+        }
+        function clearAClass(){
+            as.forEach((a)=>{
+                a.classList.remove("active");
+            })
+        }
         function login(){
             $.ajax({
                 url:"/checkLogin",
@@ -33,7 +63,6 @@
                 data:$("#login").serialize(),
                 dataType:"text",
                 success:(result)=>{
-                    
                     if (result == "success"){
                         if(confirm("登陆成功") == true){
                             window.location = "/";
@@ -77,12 +106,12 @@
 </head>
 
 <body>
-    <div class="paper margin-top-small">
+    <div class="paper margin-top-small main">
         <div class="row flex-center">
             <div>
                 <h1>welcome catchat</h1>
                 <div>
-                    <a href="#login">login</a>
+                    <a href="#login" class="active">login</a>
                     <a href="#register">register</a>
                 </div>
             </div>
