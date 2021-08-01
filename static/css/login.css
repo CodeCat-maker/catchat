@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+}
+a {
+  font-size: 20px;
+  transition: font-size 0.1s ease-out 0.1s;
+}
+.active {
+  font-size: 30px;
+  transition: font-size 0.1s ease-in-out 0.1s;
+}
+.sh {
+  display: flex;
+}
+.sh form {
+  display: none;
+}
+.sh form:target {
+  display: block;
+}
+#footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+#footer img {
+  position: relative;
+  left: 20%;
+}

@@ -6,40 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/paper.min.css">
+    <link rel="stylesheet" href="./css/login.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>登陆页面</title>
-    <style>
-        *{
-            box-sizing: border-box;
-        }
-        a{
-            font-size: 20px;
-            transition: font-size 0.1s ease-out 0.1s;
-        }
-        .active {
-            font-size: 30px;
-            transition: font-size 0.1s ease-in-out 0.1s;
-        }
-        .sh {
-            display: flex;
-        }
-        .sh form{
-            display: none;
-        }
-        .sh form:target {
-            display: block;
-            
-        }
-        #footer{
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
-        #footer img{
-            position: relative;
-            left: 20%;
-        }
-    </style>
+    
     <script>
         var as = undefined
         window.onload=()=>{
@@ -111,14 +81,14 @@
             <div>
                 <h1>welcome catchat</h1>
                 <div>
-                    <a href="#login" class="active">login</a>
+                    <a href="#login">login</a>
                     <a href="#register">register</a>
                 </div>
             </div>
             <div class="row flex-spaces">
                 <div>
                     <div class="sh">
-                        <form id="login" onsubmit="return login();">
+                        <form id="login"  onsubmit="return login();">
                             <label>用户名</label><input type="text" name="username"><br>
                             <label>密码</label><input type="password" name="password"><br>
                             <label>房间名</label><input type="text" name="rommid"><br>

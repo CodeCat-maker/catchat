@@ -8,12 +8,12 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const multer = require('multer');
 const bodyParser = require('body-parser')
-const uploader = multer({dest:'static/imgs'})
+const uploader = multer({ dest: 'static/imgs' })
 const checkUser = require("./moudle/checkUser.js")
-app.set("view engine",'ejs');
+app.set("view engine", 'ejs');
 app.use(cookieParser());
-app.use(bodyParser.urlencoded({extended:false}))
-http.listen(3000,()=>{
+app.use(bodyParser.urlencoded({ extended: false }))
+http.listen(3000, () => {
     console.log("本地3000端口");
 })
 
@@ -23,42 +23,41 @@ checkUser.register(app);
 
 const chatroom = require('./moudle/chatroom.js');
 const { fstat } = require('fs');
-app.use(express.static(path.join(__dirname,"static")))
-app.get("/login",(req,res)=>{
-    if(req.signedCookies.name){
-       res.location("/") 
-       res.end()
+app.use(express.static(path.join(__dirname, "static")))
+app.get("/login", (req, res) => {
+    if (req.signedCookies.name) {
+        res.location("/")
+        res.end()
     }
     res.statusCode = 302;
-    res.render("login",{});
+    res.render("login", {});
 })
 
-app.get('/' , (req , res)=>{
-    if(!req.cookies.name){
+app.get('/', (req, res) => {
+    if (!req.cookies.name) {
         res.redirect("/login");
         return
     }
     console.log("success");
-    res.render("index",{});
+    res.render("index", {});
 })
-app.post('/upload',uploader.single("photoImg"),(req,res)=>{
+app.post('/upload', uploader.single("photoImg"), (req, res) => {
     let file = req.file;
     console.log(file);
     let extname = path.extname(file.originalname);
     let filename = file.path + extname;
-    fs.rename(file.path,filename,(err)=>{
-        if(err){
+    fs.rename(file.path, filename, (err) => {
+        if (err) {
             console.log(err);
             return;
         }
         console.log("upload success");
     });
-    chatroom.uploadImg(io,file.filename+extname);
+    chatroom.uploadImg(io, file.filename + extname, req.cookies["name"]);
     res.send("发送成功");
 })
 //配置错误应用中间件
-app.use((req,res)=>{
-    res.status(404).render('404',{});
+app.use((req, res) => {
+    res.status(404).render('404', {});
 })
-
 chatroom.connection(io);

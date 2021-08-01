@@ -1,9 +1,10 @@
 ## 项目说明
 
-#### 当前版本v1.5.0
-增加登陆/注册页面 对接MongoDb数据库
+#### 当前版本 v1.6.0
 
-本项目是在个人学习Nodejs开发的聊天室项目，技术使用njs模版和socket.io两个第三方库以及MongoDb数据库
+增加登陆/注册页面 对接 MongoDb 数据库 采用 uuid 方法识别可重复用户名，重构用户发送信息和图片的方法
+
+本项目是在个人学习 Nodejs 开发的聊天室项目，技术使用 njs 模版和 socket.io 两个第三方库以及 MongoDb 数据库
 
 ### 项目展示
 
@@ -54,22 +55,22 @@ npm i
 | 语音通话          | 否           | -          |
 | 视频通话          | 否           | -          |
 
-| 应用技术        |
-| --------------- |
-| EJS模版引擎     |
-| Socket.io       |
-| Express路由框架 |
-| Ajax访问        |
-| paperCss        |
-| MongoDb数据库   |
+| 应用技术         |
+| ---------------- |
+| EJS 模版引擎     |
+| Socket.io        |
+| Express 路由框架 |
+| Ajax 访问        |
+| paperCss         |
+| MongoDb 数据库   |
 
 ### 未来设想
 
 开发一款跨平台免费聊天室，支持文件、图片、音频等
 
-支持 linux、windws和macOS
+支持 linux、windws 和 macOS
 
-综合支持app、微信小程序和web界面
+综合支持 app、微信小程序和 web 界面
 
 ### 未来采用技术
 
