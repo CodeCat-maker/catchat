@@ -10,14 +10,21 @@
 }())
 const socket = io();
 window.onload = function () {
+    cookies = document.cookie.split(";");
+    username = cookies[0].split("=")[1];
+    room = cookies[1].split("=")[1];
+    initRoom(room);
+    init(username);
     var btn = document.getElementById("send");
     btn.onclick = function () {
         var text = document.getElementById("m").value;
-        socket.emit("message", text);
+        var data = {
+            text,
+            room
+        }
+        socket.emit("message", data);
         return false;
     }
-    username = document.cookie.split("=")[1];
-    init(username);
     socket.on("login", (data) => {
         userLogin(data);
     })
@@ -28,28 +35,31 @@ window.onload = function () {
     socket.on("message", async (data) => {
         console.log(data);
         if (data.type == "msg") {
-            let ul = document.getElementsByTagName("ul")[0];
-            let li = document.createElement("li");
-            var d = new Date;
-            var time = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
-            li.innerHTML = "用户：" + data.user.name + "在 " + time + "说: " + data.data;
-            ul.appendChild(li);
-
+            if (data.room == room) {
+                let ul = document.getElementsByTagName("ul")[0];
+                let li = document.createElement("li");
+                var d = new Date;
+                var time = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+                li.innerHTML = "用户：" + data.user.name + "在 " + time + "说: " + data.data;
+                ul.appendChild(li);
+            }
         }
         else if (data.type == "img") {
-            var ul = document.getElementsByTagName("ul")[0];
-            var li = document.createElement("li");
-            var d = new Date;
-            var time = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
-            li.innerText = "用户：" + data.user.name + "在" + time + "发送了一张图片";
-            var path = data.path;
-            var img = document.createElement("img");
-            img.style.width = "50px";
-            img.style.height = "50px";
-            img.style.border = "1px solid white";
-            img.src = path;
-            li.appendChild(img);
-            ul.appendChild(li);
+            if (data.room == room) {
+                var ul = document.getElementsByTagName("ul")[0];
+                var li = document.createElement("li");
+                var d = new Date;
+                var time = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+                li.innerText = "用户：" + data.user.name + "在" + time + "发送了一张图片";
+                var path = data.path;
+                var img = document.createElement("img");
+                img.style.width = "50px";
+                img.style.height = "50px";
+                img.style.border = "1px solid white";
+                img.src = path;
+                li.appendChild(img);
+                ul.appendChild(li);
+            }
         }
     })
 }
@@ -68,7 +78,6 @@ function upload() {
             console.log(result);
             alert("发送成功");
             return false;
-
         },
         error: (data) => {
             console.log("失败");
@@ -77,6 +86,7 @@ function upload() {
     })
     return false;
 }
+
 userid = null
 username = null
 
@@ -111,12 +121,15 @@ function useLoginOut(data) {
 }
 function updataUserList(data) {
     let ul = document.getElementById("userList");
-    ul.innerHTML = "<li style='font-weight: bold;''>当前在线用户：" + data.onlineUserList.length + "</li><br>";
-
+    ul.innerHTML = "<li style='font-weight: bold;''>当前总在线用户：" + data.onlineUserList.length + "</li><br>";
     let list = data.onlineUserList;
     for (var i = 0; i < list.length; i++) {
         let li = document.createElement("li");
         li.innerText = list[i].name;
         ul.appendChild(li);
     }
+}
+function initRoom(roomName) {
+    var room = document.getElementById("room")
+    room.innerText = "当前聊天室为: " + roomName
 }

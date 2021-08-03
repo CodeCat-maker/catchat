@@ -10,7 +10,7 @@ let user = {
     login: (app) => {
         app.post('/checkLogin', (req, res) => {
             let body = req.body;
-            console.log(body["username"]);
+            console.log(body["room"]);
             G.client.connect(async (err) => {
                 if (err) {
                     console.log(err);
@@ -18,6 +18,7 @@ let user = {
                 }
                 if (await G.db.collection("user").find({ "name": body["username"], "pass": body["password"] }).count() > 0) {
                     res.cookie("name", body["username"]);
+                    res.cookie("room", body["room"])
                     res.send("success");
                     return
                 } else {
@@ -33,7 +34,6 @@ let user = {
             console.log(body);
             G.client.connect((err) => {
                 if (err) {
-
                     console.log(err);
                     return;
                 }

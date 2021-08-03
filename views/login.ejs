@@ -9,66 +9,66 @@
     <link rel="stylesheet" href="./css/login.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>登陆页面</title>
-    
+
     <script>
         var as = undefined
-        window.onload=()=>{
+        window.onload = () => {
             as = document.querySelectorAll("a");
-            as.forEach((a)=>{
-                a.addEventListener("click",()=>{
+            as.forEach((a) => {
+                a.addEventListener("click", () => {
                     clearAClass();
                     a.classList.add("active");
                 })
             })
         }
-        function clearAClass(){
-            as.forEach((a)=>{
+        function clearAClass() {
+            as.forEach((a) => {
                 a.classList.remove("active");
             })
         }
-        function login(){
+        function login() {
             $.ajax({
-                url:"/checkLogin",
-                type:"post",
-                data:$("#login").serialize(),
-                dataType:"text",
-                success:(result)=>{
-                    if (result == "success"){
-                        if(confirm("登陆成功") == true){
+                url: "/checkLogin",
+                type: "post",
+                data: $("#login").serialize(),
+                dataType: "text",
+                success: (result) => {
+                    if (result == "success") {
+                        if (confirm("登陆成功") == true) {
                             window.location = "/";
                         }
-                    }else{
+                    } else {
                         alert("登陆失败");
                     }
                 },
-                error:(err)=>{
+                error: (err) => {
                     console.log(err);
                 }
-                
+
             })
             return false;
         }
-        function register(){
+        function register() {
             $.ajax({
-                url:"/register",
-                type:"post",
-                data:$("#register").serialize(),
-                dataType:"text",
-                success:(result)=>{
+                url: "/register",
+                type: "post",
+                data: $("#register").serialize(),
+                dataType: "text",
+                success: (result) => {
                     console.log(result);
-                    if (result == "success"){
-                        if(confirm("注册成功") == true){
+                    if (result == "success") {
+                        if (confirm("注册成功") == true) {
                             window.location = "/";
                         }
-                    }else{
+                    } else {
                         alert("注册失败");
                     }
                 },
-                error:(err)=>{
+                error: (err) => {
                     console.log(err);
                     return;
                 }
-                
+
             })
             return false;
         }
@@ -88,10 +88,10 @@
             <div class="row flex-spaces">
                 <div>
                     <div class="sh">
-                        <form id="login"  onsubmit="return login();">
+                        <form id="login" onsubmit="return login();">
                             <label>用户名</label><input type="text" name="username"><br>
                             <label>密码</label><input type="password" name="password"><br>
-                            <label>房间名</label><input type="text" name="rommid"><br>
+                            <label>房间名</label><input type="text" name="room"><br>
                             <input type="submit" value="登陆">
                         </form>
                         <form id="register" onsubmit="return register();">
@@ -107,11 +107,12 @@
     <div id="footer" class="row flex-center margin">
         <div class="container-xs">
             <div class="col-9 md-9 sm-9">
-                <img src="https://img2.baidu.com/it/u=900045371,2498353875&fm=26&fmt=auto&gp=0.jpg"  class="no-border" style="height: 100%;width: 100%;">
+                <img src="https://img2.baidu.com/it/u=900045371,2498353875&fm=26&fmt=auto&gp=0.jpg" class="no-border"
+                    style="height: 100%;width: 100%;">
             </div>
-            <p style="text-align: center;">2021@powered by Codecat</p> 
+            <p style="text-align: center;">2021@powered by Codecat</p>
         </div>
-        
+
     </div>
 </body>
 

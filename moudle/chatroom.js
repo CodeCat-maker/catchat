@@ -6,6 +6,7 @@ var app = {
             so.on("login", (user) => {
                 so.name = user.name;
                 so.userId = user.userId;
+                console.log(onlineUserList);
                 if (!onlineUserList.hasOwnProperty(user.userid)) {
                     onlineUserList[user.userid] = user.name;
                     onlineUserList.push(user);
@@ -23,12 +24,14 @@ var app = {
             so.on("message", (data) => {
                 msg = {
                     "type": "msg",
-                    data,
+                    "room": data.room,
+                    "data": data.text,
                     "user": {
                         "name": so.name,
                         "userId": so.userId
                     }
                 }
+                console.log(msg);
                 io.emit("message", msg);
             })
         })
