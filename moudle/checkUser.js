@@ -10,6 +10,11 @@ let user = {
     login: (app) => {
         app.post('/checkLogin', (req, res) => {
             let body = req.body;
+            console.log(typeof (body["room"]));
+            if (body["room"] == "" || body["username"] == "" || body["password"] == "") {
+                res.send("error");
+                return;
+            }
             console.log(body["room"]);
             G.client.connect(async (err) => {
                 if (err) {
